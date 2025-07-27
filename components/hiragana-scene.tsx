@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -357,9 +358,11 @@ export default function HiraganaScene({ onHiraganaClick }: HiraganaSceneProps) {
                     <div className="flex flex-col items-center gap-0.5 sm:gap-1 w-[40%]">
                       {item.image && (
                         <div className="aspect-square w-full max-w-12 min-w-6 flex items-center justify-center overflow-hidden">
-                          <img
+                          <Image
                             src={item.image}
                             alt={item.word}
+                            width={48}
+                            height={48}
                             className="w-full h-full object-cover rounded"
                           />
                         </div>
@@ -394,13 +397,15 @@ export default function HiraganaScene({ onHiraganaClick }: HiraganaSceneProps) {
                 </div>
                 {selectedCharacter && (
                   <div className="flex-shrink-0">
-                    <img
+                    <Image
                       src={`${
                         hiraganaData.find(
                           (item) => item.character === selectedCharacter
                         )?.image || ""
                       }`}
                       alt={`${selectedCharacter}のイラスト`}
+                      width={64}
+                      height={64}
                       className="w-16 h-16 object-contain"
                       onError={(e) => {
                         // 画像が読み込めない場合は非表示にする
